@@ -4,8 +4,7 @@ import com.chern.serverapplication.electrostoreserver.model.Product;
 import com.chern.serverapplication.electrostoreserver.service.ProductService;
 import com.chern.serverapplication.electrostoreserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +17,20 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getAll(){
         return productService.getAll();
+    }
+
+    @PostMapping("/product")
+    public boolean add(@RequestBody Product product){
+        return productService.add(product);
+    }
+
+    @GetMapping("/product/{id}")
+    public Product get(@PathVariable Long id){
+        return productService.findById(id);
+    }
+
+    @PutMapping("/product/update")
+    public boolean update(@RequestBody Product product){
+        return productService.update(product);
     }
 }
