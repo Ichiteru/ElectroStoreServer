@@ -17,4 +17,16 @@ public class SupplierService {
     public List<Supplier> getAll() {
         return supplierRepo.findAll();
     }
+
+    public boolean add(Supplier supplier) {
+        if (!supplierRepo.existsByName(supplier.getName())){
+            supplierRepo.save(supplier);
+            return true;
+        }
+        return false;
+    }
+
+    public void delete(Long id) {
+        supplierRepo.deleteById(id);
+    }
 }

@@ -16,4 +16,16 @@ public class ProductNameService {
     public List<ProductName> getAll() {
         return productNameRepo.findAll();
     }
+
+    public boolean add(ProductName productName) {
+        if (!productNameRepo.existsByName(productName.getName())){
+            productNameRepo.save(productName);
+            return true;
+        }
+        return false;
+    }
+
+    public void delete(Long id) {
+        productNameRepo.deleteById(id);
+    }
 }
