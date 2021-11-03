@@ -36,4 +36,8 @@ public class UserService {
         }
         return false;
     }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 }

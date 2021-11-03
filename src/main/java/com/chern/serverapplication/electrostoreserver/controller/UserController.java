@@ -23,4 +23,9 @@ public class UserController {
     public boolean register(@RequestBody User user){
         return userService.registerUser(user);
     }
+
+    @GetMapping("/user")
+    public User getUser(){
+        return userService.getCurrentUser();
+    }
 }

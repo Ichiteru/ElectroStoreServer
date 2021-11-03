@@ -40,4 +40,8 @@ public class ProductService {
         }
         return false;
     }
+
+    public void delete(Long id) {
+        productRepo.deleteById(id);
+    }
 }
