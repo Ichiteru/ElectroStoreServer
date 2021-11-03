@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -27,5 +28,25 @@ public class UserController {
     @GetMapping("/user")
     public User getUser(){
         return userService.getCurrentUser();
+    }
+
+    @GetMapping("/users")
+    public List<User> getAll(){
+        return userService.getAll();
+    }
+
+    @PutMapping("/user")
+    public void update(@RequestBody User user){
+        userService.update(user);
+    }
+
+    @PostMapping("/user")
+    public boolean add(@RequestBody User user){
+        return userService.add(user);
+    }
+
+    @DeleteMapping("/user/{id}")
+    public void delete(@PathVariable Long id){
+        userService.delete(id);
     }
 }

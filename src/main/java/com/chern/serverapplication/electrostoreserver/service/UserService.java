@@ -7,6 +7,7 @@ import com.chern.serverapplication.electrostoreserver.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +40,22 @@ public class UserService {
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public List<User> getAll() {
+        return userRepo.findAll();
+    }
+
+    public void update(User user) {
+        userRepo.save(user);
+    }
+
+    public boolean add(User user) {
+        userRepo.save(user);
+        return true;
+    }
+
+    public void delete(Long id) {
+        userRepo.deleteById(id);
     }
 }
