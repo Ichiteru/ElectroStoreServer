@@ -21,10 +21,14 @@ public class UserService {
         Optional<User> u = userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         if (u.isPresent()){
             currentUser = u.get();
-            if (currentUser.getRole().equals(Role.ADMIN))
+            if (currentUser.getRole().equals(Role.ADMIN)){
+                System.out.println("User " + currentUser.getUsername() + " with role " + currentUser.getRole().toString() + " connect to server");
                 return UserStatus.CREATED_ADMIN;
-            if (currentUser.getRole().equals(Role.USER))
+            }
+            if (currentUser.getRole().equals(Role.USER)){
+                System.out.println("User " + currentUser.getUsername() + " with role " + currentUser.getRole().toString() + " connect to server");
                 return UserStatus.CREATED_USER;
+            }
         }
         return UserStatus.UNKNOWER;
     }

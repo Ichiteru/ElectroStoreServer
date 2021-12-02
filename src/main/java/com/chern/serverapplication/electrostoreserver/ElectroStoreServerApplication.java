@@ -8,6 +8,7 @@ public class ElectroStoreServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ElectroStoreServerApplication.class, args);
+        System.out.println("Сервер успешно запущен.\n Порт: 8085");
     }
 
 }
